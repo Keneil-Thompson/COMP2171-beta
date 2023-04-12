@@ -66,12 +66,12 @@ public class ActionController
          {
             fw = new FileWriter(new File(EVENTS_FILE));
             StringBuilder sb = new StringBuilder();
-            Map<Date, List<Event>> events = model.getEvents();
-            Iterator<Map.Entry<Date, List<Event>>> it = events.entrySet().iterator();
+            Map<Date, List<Appointment>> events = model.getEvents();
+            Iterator<Map.Entry<Date, List<Appointment>>> it = events.entrySet().iterator();
             while (it.hasNext())
             {
-               Map.Entry<Date, List<Event>> pair = it.next();
-               for (Event ev : pair.getValue())
+               Map.Entry<Date, List<Appointment>> pair = it.next();
+               for (Appointment ev : pair.getValue())
                {
                   sb.append(ev.getStart().getTimeInMillis()).append("\n");
                   sb.append(ev.getEnd().getTimeInMillis()).append("\n");

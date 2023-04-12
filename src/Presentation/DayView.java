@@ -3,7 +3,7 @@ package Presentation;
 import javax.swing.*;
 
 import Persistence.CalendarModel;
-import Persistence.Event;
+import Persistence.Appointment;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -25,7 +25,7 @@ public class DayView extends JPanel implements Observer
    private JLabel day;
    private String[] days = {"Sunday", "Monday", "Tuesday", "Wednesday",
       "Thursday", "Friday", "Saturday"};
-   private ArrayList<Event> eventsList;
+   private ArrayList<Appointment> eventsList;
    private Date selectedDate;
    private JPanel eventsPanel;
    private Color oddEvents;
@@ -87,7 +87,7 @@ public class DayView extends JPanel implements Observer
       {
          eventsList = calendarModel.getDayEvents(selectedDate);
          boolean colorSwap = false;
-         for (Event e : eventsList)
+         for (Appointment e : eventsList)
          {
             String start = sdf.format(e.getStart().getTime());
             String end = sdf.format(e.getEnd().getTime());
@@ -186,7 +186,7 @@ public class DayView extends JPanel implements Observer
       {
          eventsList = calendarModel.getDayEvents(selectedDate);
          boolean colorSwap = false;
-         for (Event e : eventsList)
+         for (Appointment e : eventsList)
          {
             String start = sdf.format(e.getStart().getTime());
             String end = sdf.format(e.getEnd().getTime());

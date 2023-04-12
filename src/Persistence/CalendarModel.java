@@ -20,7 +20,7 @@ public class CalendarModel extends Observable
    private int selectedMonth;
    private int selectedYear;
    // Events
-   private Map<Date, List<Event>> events;
+   private Map<Date, List<Appointment>> events;
    
 
    /**Constructor method for CalendarModel*/
@@ -165,7 +165,7 @@ public class CalendarModel extends Observable
       if (start.before(end))
       {
          eventAdded = true;
-         Event newEvent = new Event(start, end, title, status);
+         Appointment newEvent = new Appointment(start, end, title, status);
 
          // Format used for storing events [KEY]
          SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
@@ -183,8 +183,8 @@ public class CalendarModel extends Observable
          if (events.containsKey(eventDate))
          {
             // Retrieve the list of events for this date and add the new event.
-            List<Event> eventList = events.get(eventDate);
-            for (Event oldEvent : eventList)
+            List<Appointment> eventList = events.get(eventDate);
+            for (Appointment oldEvent : eventList)
             {
                // New event start is inside of old event
                if (newEvent.getStart().after(oldEvent.getStart()) &&
@@ -205,13 +205,13 @@ public class CalendarModel extends Observable
                eventList.add(newEvent);
                eventAdded = true;
                // Resort the list.
-               Collections.sort(eventList, Event::compareTo);
+               Collections.sort(eventList, Appointment::compareTo);
             }
          } else
          {
             // If the key does not exist, we need a new event list to hold
             // events for this date.
-            List<Event> eventList = new ArrayList<>();
+            List<Appointment> eventList = new ArrayList<>();
             eventList.add(newEvent);
             events.put(eventDate, eventList);
             eventAdded = true;
@@ -246,9 +246,9 @@ public class CalendarModel extends Observable
    }
 
 
-   public ArrayList<Event> getDayEvents(Date date)
+   public ArrayList<Appointment> getDayEvents(Date date)
    {
-      ArrayList<Event> todaysEvents = new ArrayList<>();
+      ArrayList<Appointment> todaysEvents = new ArrayList<>();
       SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
       try
       {
@@ -264,8 +264,8 @@ public class CalendarModel extends Observable
       sdf.applyPattern("HH:mm");
       if (events.containsKey(date))
       {
-         List<Event> eventList = events.get(date);
-         for (Event e : eventList)
+         List<Appointment> eventList = events.get(date);
+         for (Appointment e : eventList)
          {
             todaysEvents.add(e);
          }
@@ -279,7 +279,7 @@ public class CalendarModel extends Observable
    }
 
    /**Returns the events Map */
-   public Map<Date, List<Event>> getEvents()
+   public Map<Date, List<Appointment>> getEvents()
    {
       return events;
    }

@@ -2,8 +2,8 @@ package Persistence;
 
 import java.util.Calendar;
 
-/**Class to manipulate Calendar Events.*/
-public class Event implements Comparable<Event>
+/**Class to manipulate Calendar Events (Appointments).*/
+public class Appointment implements Comparable<Appointment>
 {
    private Calendar start;
    private Calendar end;
@@ -12,7 +12,7 @@ public class Event implements Comparable<Event>
    
    /**
     * Constructor method */
-   public Event(Calendar start, Calendar end, String title, String status)
+   public Appointment(Calendar start, Calendar end, String title, String status)
    {
       this.start = start;
       this.end = end;
@@ -21,19 +21,19 @@ public class Event implements Comparable<Event>
    }
    
    /**
-    * Returns the start date/time of the event */
+    * Returns the start date/time of the appointment */
    public Calendar getStart()
    {
       return this.start;
    }
    
-   /**Returns the end date/time of the event */
+   /**Returns the end date/time of the appointment */
    public Calendar getEnd()
    {
       return this.end;
    }
    
-   /**Returns the title of the event. */
+   /**Returns the title of the appointment. */
    public String getTitle()
    {
       return this.title;
@@ -44,9 +44,9 @@ public class Event implements Comparable<Event>
 
    }
 
-   /**Compares two Event objects for sorted ordering*/
+   /**Compares two Appointment objects for sorted ordering*/
    @Override
-   public int compareTo(Event c)
+   public int compareTo(Appointment c)
    {
       return this.getStart().compareTo(c.getStart());
    }

@@ -18,11 +18,11 @@ import java.util.Locale;
 /**
  Class to launch Appointment application
 */
-public class SimpleCalendar extends JFrame
+public class Schedule extends JFrame
 {
 	
-   /**Constructor for the SimpleCalendar class.*/
-   public SimpleCalendar()
+   /**Constructor for the Schedule class.*/
+   public Schedule()
    {
       try
       {
