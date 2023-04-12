@@ -1,1 +1,1 @@
-# COMP2171-beta
+# COMP2171
